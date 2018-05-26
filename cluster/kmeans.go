@@ -282,21 +282,21 @@ func (k *KMeans) Predict(x []float64, normalize ...bool) ([]float64, error) {
 func (k *KMeans) Learn() error {
 	if k.trainingSet == nil {
 		err := fmt.Errorf("ERROR: Attempting to learn with no training examples!\n")
-		fmt.Fprintf(k.Output, err.Error())
+		//fmt.Fprintf(k.Output, err.Error())
 		return err
 	}
 
 	examples := len(k.trainingSet)
 	if examples == 0 || len(k.trainingSet[0]) == 0 {
 		err := fmt.Errorf("ERROR: Attempting to learn with no training examples!\n")
-		fmt.Fprintf(k.Output, err.Error())
+		//fmt.Fprintf(k.Output, err.Error())
 		return err
 	}
 
 	centroids := len(k.Centroids)
 	features := len(k.trainingSet[0])
 
-	fmt.Fprintf(k.Output, "Training:\n\tModel: K-Means++ Classification\n\tTraining Examples: %v\n\tFeatures: %v\n\tClasses: %v\n...\n\n", examples, features, centroids)
+	//fmt.Fprintf(k.Output, "Training:\n\tModel: K-Means++ Classification\n\tTraining Examples: %v\n\tFeatures: %v\n\tClasses: %v\n...\n\n", examples, features, centroids)
 
 	// instantiate the centroids using k-means++
 	k.Centroids[0] = k.trainingSet[rand.Intn(len(k.trainingSet))]
@@ -379,7 +379,7 @@ func (k *KMeans) Learn() error {
 		}
 	}
 
-	fmt.Fprintf(k.Output, "Training Completed in %v iterations.\n%v\n", iter, k)
+	//fmt.Fprintf(k.Output, "Training Completed in %v iterations.\n%v\n", iter, k)
 
 	return nil
 }
